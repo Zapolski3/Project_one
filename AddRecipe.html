@@ -2,47 +2,120 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Recipe</title>
-    <link href="assets/CSS/AddRecipe.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Recipe</title>
+  <link href="assets/CSS/AddRecipe.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <nav id="maincolor" class="navbar">
-        <a class="navbar-brand" href="#">
-            <img class="logoimage ml-0" src=assets/Images/SousChef(templogo).png alt="logo"></a>
-        <div class="row">
+  <nav id="maincolor" class="navbar">
+    <a class="navbar-brand" href="#">
+      <img class="logoimage ml-0" src=assets/Images/SousChef(templogo).png alt="logo"></a>
+    <div class="row">
 
-            <a id="accountBtn" class="btn  btn-lg mt-2" href="#">Account</a>
-            <a id="usernameBtn" class="btn  btn-lg mt-2" href="#">Username</a>
-            <img class="userImg mr-3" src="assets/images/homePageImages/silly-cartoon-face-md.png" alt="user picture"
-                width="65px" height="65px" />
+      <a id="accountBtn" class="btn  btn-lg mt-2" href="#">Account</a>
+      <a id="usernameBtn" class="btn  btn-lg mt-2" href="#">Username</a>
+      <img class="userImg mr-3" src="assets/images/homePageImages/silly-cartoon-face-md.png" alt="user picture"
+        width="65px" height="65px" />
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div id="mainContent" class=" col-5">
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1 text-warning">
+            <p class="text-warning mt-3 mb-0">Recipe Name</p>
+          </label>
+          <input type="text" class="form-control" id="recipeNameInput" placeholder=".....">
         </div>
-    </nav>
+        <div class="form-group">
+            <label for="exampleFormControlInput1 text-warning">
+              <p class="text-warning mt-3 mb-0">Ingredients</p>
+            </label>
+            <input type="text" class="form-control" id="ingridientsInput" placeholder="">
+          </div>
 
-    <div id="mainContent" class="container">
-            <form>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1 text-warning"><p class="text-warning mt-3 mb-0">Recipe Name</p></label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=".....">
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="exampleFormControlTextarea1"><p class="text-warning mb-0">Step 1</p> </label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                  </form>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">
+            <p class="text-warning mb-0">Step 1</p>
+          </label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <button id="addStep" type="button" class="btn btn-light text-warning">Add Step</button>
+        </div>
+      </form>
     </div>
 
-    
+    <div class="col-5">
+      <div id="recipeNameDisplay" class="card-header">
+        Name Goes here
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Steps will apper here</h5>
 
-    <div id="footerHome" class="fixed-bottom bg-secondary"></div>
 
+      </div>
+
+      <button id="startCooking" type="button" class="btn btn-light text-warning">Start Cooking</button>
+      <button id="uploadMore" type="button" class="btn btn-light text-warning">Upload More</button>
+
+    </div>
+    <div class="col-1"></div>
+
+
+  </div>
+
+
+
+
+
+
+  <div id="footerHome" class="fixed-bottom bg-secondary col-12"></div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+  <script>
+
+    var ingridientsArray;
+
+    // Capture Button Click
+    $("#addStep").on("click", function (event) {
+      // prevent form from trying to submit/refresh the page
+      event.preventDefault();
+
+      // Capture User Inputs and store them into variables
+      var recipeName = $("#recipeNameInput").val().trim();
+      var ingridients = $("#ingridientsInput").val().trim();
+      // var age = $("#age-input").val().trim();
+      // var comment = $("#comment-input").val().trim();
+      ingridientsArray = ingridients.split(",");
+      console.log(ingridientsArray);
+      // Console log each of the user inputs to confirm we are receiving them
+      // console.log(name);
+      
+      // console.log(age);
+      // console.log(comment);
+
+      // Output all of the new information into the relevant HTML sections
+      $("#recipeNameDisplay").text(recipeName);
+      $("#email-display").text(email);
+      // $("#age-display").text(age);
+      // $("#comment-display").text(comment);
+
+    });
+
+
+  </script>
+
+  
 </body>
 
 </html>
